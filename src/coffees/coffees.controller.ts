@@ -34,13 +34,15 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  fineOne(@Param('id') id: string) {
+  fineOne(@Param('id') id: number) {
     // return `This action returns #${id} coffees`;
-    return this.coffeesService.findOne(id);
+    console.log(typeof id);
+    return this.coffeesService.findOne('' + id);
   }
 
   @Post()
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
+    console.log(createCoffeeDto instanceof CreateCoffeeDto);
     return this.coffeesService.create(createCoffeeDto);
   }
 
