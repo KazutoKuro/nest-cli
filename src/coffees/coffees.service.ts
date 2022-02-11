@@ -8,7 +8,7 @@ export class CoffeesService {
       id: 1,
       name: 'Shipwreck Roast',
       brand: 'Buddy Brew',
-      flavor: ['chocolate', 'vanilla'],
+      flavors: ['chocolate', 'vanilla'],
     },
   ];
 
