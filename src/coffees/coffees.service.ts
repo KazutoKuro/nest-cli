@@ -18,8 +18,8 @@ import { Flavor } from './entities/flavor.entity';
 
 // @Injectable({ scope: Scope.DEFAULT })
 // @Injectable({ scope: Scope.TRANSIENT })
-@Injectable({ scope: Scope.REQUEST })
 // @Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class CoffeesService {
   constructor(
     @InjectRepository(Coffee)
