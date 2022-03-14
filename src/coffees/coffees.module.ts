@@ -1,6 +1,6 @@
 // Static module
 
-import { Injectable, Module } from '@nestjs/common';
+import { Injectable, Module, Scope } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
 import { Connection } from 'typeorm';
@@ -29,24 +29,31 @@ import { Flavor } from './entities/flavor.entity';
     CoffeesService,
     // CoffeeBrandsFactory,
 
+    {
+      provide: COFFEE_BRANDS,
+      useFactory: () => ['buddy brew', 'nescafe'],
+      scope: Scope.TRANSIENT,
+    },
+
     // {
     //   provide: ConfigService,
     //   useClass:
     //     process.env.NODE_ENV === 'development'
     //       ? DevelopmentconfigService
-    //       : ProductConfigService,
+    //       : ProductConfig္Service,
     // },
 
-    {
-      provide: COFFEE_BRANDS,
-      useFactory: async (connection: Connection): Promise<string[]> => {
-        // const coffeeBrands = await connection.query ('SELECT * ...');
-        const coffeeBrands = await Promise.resolve(['buddy brew', 'nescafe']);
-        console.log('[!] Async factory');
-        return coffeeBrands;
-      },
-      inject: [Connection],
-    },
+    // {
+    //   provide: COFFEE_BRANDS,
+    //   useFactory: async (connection: Connection): Promise<string[]> => {
+    //     // const coffeeBrands = await connection.query ('SELECT * ...');
+    //     const coffeeBrands = await Promise.resolve(['buddy brew', 'nescafe']);
+    //     console.log('[!] Async factory');
+    //     return coffeeBrands;
+    //   },
+    //   inject: [Connection],
+    // },
+
     // { provide: COFFEE_BRANDS, useValue: ['buddy brew', 'nescafe'] },
 
     // {
