@@ -3,7 +3,7 @@ module.exports = {
   host: 'localhost',
   port: 5432,
   username: 'kuro',
-  password: 'pass123',
+  password: 'kuro123',
   database: 'learning',
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/migrations/*.js'],
